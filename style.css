@@ -157,10 +157,10 @@ body {
 /* Keyframes for two items */
 @keyframes show {
   0% {
-    margin-top: -13.5vw; /* Start with the second item hidden above */
+    margin-top: -12.5vw; /* Start with the second item hidden above */
   }
   25% {
-    margin-top: -13.5vw; /* Hold on the first item */
+    margin-top: -12.5vw; /* Hold on the first item */
   }
   50% {
     margin-top: 0vw; /* Transition to the second item */
@@ -169,7 +169,7 @@ body {
     margin-top: 0vw; /* Hold on the second item */
   }
   100% {
-    margin-top: -13.5vw; /* Reset to the first item */
+    margin-top: -12.5vw; /* Reset to the first item */
   }
 }
 
