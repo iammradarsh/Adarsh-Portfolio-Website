@@ -1,0 +1,203 @@
+@font-face {
+    font-family: sant;
+    src: url(./fonts/Santorizo.ttf);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}html,body{
+    height: 100%;
+    width: 100%;
+}
+#main
+{
+    width: 100%;
+    min-height: 150vh;
+    background-color: #fff;
+}
+#div{
+    height: 20vh;
+    width: 100%;
+}
+#secondmain{
+    min-height: 150vh;
+    background-color: #f2f2f2;
+
+}
+#work{
+    position: relative;
+    padding-top: 150px;
+    width: 100%;
+}
+#work::before{
+    content: "";
+    position: absolute;
+    top: -55px;
+    width: 100%;
+    height: 150px;
+    transform: rotate(-180deg);
+    background-image: url(https://abhishekjha.me/rip.f6d7c4dd.svg);
+    background-size: cover;
+}
+#work .workrow{
+    padding: 0 10vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.workrow h1{
+    display: flex;
+    align-items: baseline;
+    font-size: 8vw;
+    font-weight: 100;
+    font-family: "sant";
+}
+.workrow h1 .small{
+    font-size: 1.5vw;
+    font-weight: 600;
+    margin-left: 5vw;
+    font-family: "gilroy";
+}
+.o-ui-arrow {
+    width: 6vw;
+    rotate: 90deg;
+}
+.o-ui-arrow path{
+    stroke: rgb(156, 156, 156);
+
+} 
+.font{
+    color: #16CF94;
+    font-family: "voyage";
+    font-style: italic;
+    
+
+}
+
+
+#images{
+    position: relative;
+    margin-top: 6vw;
+    width: 100%;
+    padding: 0 5vw;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+.cnt{
+    overflow: hidden; 
+    border-radius: 80px;
+}
+.cnt img{
+    width: 105%;
+    transition: filter cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
+}
+.cnt1{
+    width: 55%;
+
+}
+.cnt2{
+    width: 25%;
+
+}
+
+#cursor{
+    position: fixed;
+    width: 17vw;
+    top: 43%;
+    left: 7%;
+    transform: translate(-50%,-50%);
+    z-index: 100;
+
+}
+
+#cursor>div{
+    pointer-events: none;
+    opacity: 0;
+    position: absolute;
+    transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s ;
+}
+
+.circ-element{
+    width: 100%;
+    position: relative;
+
+}
+
+
+#cursor .crow{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    padding: .7vw;
+}
+.crow .ccircle{
+    width: 2vw;
+    height: 2vw;
+    border: 2px solid #fff;
+    border-radius: 50%;
+}
+.crow .ccapsule{
+    padding: .7vw 3vw;
+    border-radius: 100px;
+    background-color: #fff;
+
+}
+
+.circ-element img{
+
+    width: 100%;
+    opacity: 0;
+    animation: change 5s linear infinite;
+    position: absolute;
+
+}
+.circ-element img:nth-child(2){
+    animation-delay: 1s;
+
+}
+.circ-element img:nth-child(3){
+
+    animation-delay: 2s;
+    
+}
+.circ-element img:nth-child(4){
+    animation-delay: 3s;
+    
+}
+.circ-element img:nth-child(5){
+    animation-delay: 4s;
+    
+}
+
+
+@keyframes change {
+    0%{
+        opacity: 1;
+    }
+    20%{
+        opacity: 1;
+    }
+    21%{
+        opacity: 0;
+    }
+    40%{
+        opacity: 0;
+    }
+    60%{
+        opacity: 0;
+    }
+    80%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 0;
+    }
+    
+}
+
