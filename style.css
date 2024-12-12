@@ -140,7 +140,7 @@ body {
   color: #fff;
   padding: 4px 12px;
   height: 12.5vw;
-  margin-bottom: 10.5vw; /* Matches the height to create seamless transition */
+  margin-bottom: 11.5vw; /* Matches the height to create seamless transition */
   display: inline-block;
 }
 #flip > div > div h1 {
