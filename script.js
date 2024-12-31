@@ -240,13 +240,13 @@ function skewer() {
 }
 skewer();
 
-function loco() {
-  const scroll = new LocomotiveScroll({
-    el: document.querySelector("#main"),
-    smooth: true,
-  });
-}
-loco();
+// function loco() {
+//   const scroll = new LocomotiveScroll({
+//     el: document.querySelector("#main"),
+//     smooth: true,
+//   });
+// }
+// loco();
 
 // gsap.from("g path",{
 //     strokeDasharray:64.68521881103516,
