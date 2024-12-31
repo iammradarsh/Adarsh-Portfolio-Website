@@ -156,20 +156,37 @@ body {
 
 /* Keyframes for two items */
 @keyframes show {
-  0% {
-    margin-top: -12.5vw; /* Start with the second item hidden above */
+  0%,
+  20% {
+    margin-top: -12.5vw; /* Start hidden above */
   }
-  25% {
-    margin-top: -12.5vw; /* Hold on the first item */
+  20%,
+  40% {
+    margin-top: -12.5vw; /* Start hidden above */
   }
+  40%,
   50% {
-    margin-top: 0vw; /* Transition to the second item */
+    margin-top: -37vw; /* Show the third item */
   }
+  50%,
+  60% {
+    margin-top: -37vw; /* Show the third item */
+  }
+  60%,
+  70% {
+    margin-top: -12.5vw; /* Show the second item */
+  }
+  70%,
   75% {
-    margin-top: 0vw; /* Hold on the second item */
+    margin-top: 0vw; /* Show the first item */
   }
+  75%,
+  80% {
+    margin-top: 0vw; /* Show the first item */
+  }
+  80%,
   100% {
-    margin-top: -12.5vw; /* Reset to the first item */
+    margin-top: -12.5vw; /* Reset for the next cycle */
   }
 }
 
@@ -488,6 +505,152 @@ polyline {
   animation-delay: 4s;
 } */
 
+#page2 {
+  position: relative;
+  width: 100%;
+  margin-bottom: 100px;
+  min-height: 100vh;
+  background-color: #eeeded;
+}
+#page2 > h6 {
+  position: absolute;
+  left: 45%;
+  font-size: 6vw;
+  opacity: 0.6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+#page2text {
+  padding: 0 10vw;
+}
+#page2text h1 {
+  font-size: 8vw;
+  font-family: "sant";
+  font-weight: 100;
+}
+#page2text p {
+  font-size: 3vw;
+  opacity: 0.8;
+  margin-bottom: 10px;
+  font-family: "mazius";
+}
+#projects {
+  overflow-x: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 100px;
+  width: 100%;
+  min-height: 60vh;
+  margin-top: 20px;
+  padding: 0 5vw;
+}
+#projects::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  -webkit-transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
+  -o-transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.5s;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  position: relative;
+  width: 50%;
+  min-height: inherit;
+  overflow: hidden;
+  will-change: transform;
+  -webkit-transform: skewX(0deg);
+  -ms-transform: skewX(0deg);
+  transform: skewX(0deg);
+}
+.slide > img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -webkit-transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+  -o-transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
+}
+.slide img:nth-child(1) {
+  -webkit-filter: grayscale(90%);
+  filter: grayscale(90%);
+}
+.slide img:nth-child(2) {
+  -webkit-transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  -webkit-clip-path: circle(0% at 50% 50%);
+  clip-path: circle(0% at 50% 50%);
+}
+
+#footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #eeeded;
+}
+#footerleft {
+  position: relative;
+  height: 100vh;
+  width: 70%;
+}
+#links {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  line-height: 1;
+}
+#links h1 {
+  font-size: 6vw;
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+}
+#links > a {
+  color: black;
+  text-decoration: none;
+  opacity: 0.6;
+  line-height: 2;
+  font-size: 1vw;
+  font-family: "monument";
+  letter-spacing: 3px;
+}
+#links > a:nth-child(2) {
+  opacity: 1;
+}
+#footerright {
+  position: relative;
+  height: 100vh;
+  width: 30%;
+  background-color: blueviolet;
+}
+#footerright > img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: top;
+  object-position: top;
+}
+
 @keyframes change {
   0% {
     opacity: 1;
@@ -568,5 +731,69 @@ polyline {
   #images {
     margin-top: 0px;
     height: 55vmin;
+  }
+
+  #page2 {
+    min-height: 50vh;
+  }
+  #page2 > h6 {
+    font-size: 8vw;
+    margin-top: 20px;
+  }
+  #page2text {
+    padding: 20px 20px;
+  }
+  #page2text h1 {
+    font-size: 20vw;
+  }
+  #page2text p {
+    font-size: 9vw;
+    opacity: 0.6;
+  }
+  #projects {
+    min-height: 25vh;
+    padding: 0 40px;
+  }
+  .slide {
+    width: 100%;
+  }
+
+  #footer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  #links h1 {
+    font-size: 15vw;
+  }
+  #links > a {
+    font-size: 3vw;
+  }
+  #footerleft {
+    width: 100%;
+    height: 50vh;
+  }
+  #footerright {
+    width: 100%;
+    height: 50vh;
+  }
+  #footerright > img {
+    -o-object-position: bottom;
+    object-position: bottom;
+  }
+}
+
+@-webkit-keyframes gradient {
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes gradient {
+  100% {
+    -webkit-filter: hue-rotate(360deg);
+    filter: hue-rotate(360deg);
   }
 }
