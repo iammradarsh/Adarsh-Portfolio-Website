@@ -96,6 +96,23 @@ function loaderAnimation() {
     });
 }
 
+function updateIndiaTime() {
+  const options = {
+    timeZone: "Asia/Kolkata",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  };
+
+  const time = new Date().toLocaleTimeString("en-IN", options);
+
+  document.getElementById("india-time").innerText = "MY LOCAL TIME " + time;
+}
+
+updateIndiaTime();
+setInterval(updateIndiaTime, 1000);
+
 function animateSvg() {
   gsap.to("#Visual>g>g>path, #Visual>g>g>polyline", {
     strokeDashoffset: 0,

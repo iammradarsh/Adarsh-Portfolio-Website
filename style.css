@@ -151,7 +151,7 @@ body {
 }
 
 #flip div:first-child {
-  animation: show 6s cubic-bezier(0.19, 1, 0.22, 1) infinite; /* Adjusted animation duration for two items */
+  /* animation: show 6s cubic-bezier(0.19, 1, 0.22, 1) infinite; Adjusted animation duration for two items */
 }
 
 /* Keyframes for two items */
@@ -211,7 +211,18 @@ body {
 }
 .work-time {
   display: flex;
-  gap: 40px;
+  gap: 20px;
+  align-items: center;
+  justify-content: start;
+}
+.work-time .text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.work-time .text h5 {
+  white-space: nowrap;
+  margin: 0;
 }
 .row h5 {
   font-size: 12px;
@@ -288,25 +299,26 @@ polyline {
 
 #imgrig .imgcntnr:nth-child(1) {
   transform: translate(-20%, -10%) rotate(-8deg);
-  background-image: url(https://images.unsplash.com/photo-1666884558195-f2da8a42f7c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1380&q=80);
+  background-image: url(./Thoughts/thought1.png);
   background-size: cover;
   background-position: center;
 }
 #imgrig .imgcntnr:nth-child(2) {
   transform: translate(10%, 5%) rotate(-4deg);
-  background-image: url(https://images.unsplash.com/photo-1488161628813-04466f872be2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1528&q=80);
+  background-image: url(./Thoughts/thought2.png);
   background-size: cover;
   background-position: center;
 }
 #imgrig .imgcntnr:nth-child(3) {
   transform: translate(45%, 20%) rotate(2deg);
-  background-image: url(https://images.unsplash.com/photo-1652196819350-c93eaff773c0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80);
+  background-image: url(./Thoughts/thought3.png);
   background-size: cover;
   background-position: center;
 }
 #work .all-works {
   display: flex;
   flex-direction: column;
+  gap: 10vw;
 
   /* height: 100vmin; */
   width: 100%;
@@ -366,7 +378,7 @@ polyline {
 #images {
   position: relative;
   /* margin-top: 6vw; */
-  height: 80vmin;
+  /* height: 80vmin; */
   width: 100%;
   padding: 0 5vw;
   display: flex;
@@ -416,7 +428,7 @@ polyline {
   transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
   padding: 10px 20px;
   border-radius: 50px;
-  box-shadow: 10px 10px 20px rgba(76, 76, 76, 0.748);
+  /* box-shadow: 10px 10px 20px rgba(76, 76, 76, 0.748); */
 }
 .link_button {
   text-decoration: none;
@@ -433,7 +445,7 @@ polyline {
   padding: 10px 20px;
   background-color: #fff;
   border-radius: 50px;
-  box-shadow: 10px 10px 20px rgba(76, 76, 76, 0.748);
+  /* box-shadow: 10px 10px 20px rgba(76, 76, 76, 0.748); */
 }
 .link_button i {
   font-size: 2rem;
@@ -729,6 +741,7 @@ polyline {
     padding-top: 82px;
   }
   #images {
+    position: relative;
     margin-top: 0px;
     height: 55vmin;
   }
