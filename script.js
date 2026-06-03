@@ -1,13 +1,97 @@
+let scrollInstance;
+
 function locoIntialize() {
-  const scroll = new LocomotiveScroll({
+  gsap.registerPlugin(ScrollTrigger);
+
+  scrollInstance = new LocomotiveScroll({
     el: document.querySelector("#main"),
     smooth: true,
   });
 
-  // Update cursor position on scroll
-  scroll.on("scroll", (args) => {
+  // Update cursor position and trigger ScrollTrigger update on scroll
+  scrollInstance.on("scroll", (args) => {
     const scrollY = args.scroll.y;
     updateCursorPosition(scrollY);
+  });
+
+  scrollInstance.on("scroll", ScrollTrigger.update);
+
+  // Link LocomotiveScroll with GSAP ScrollTrigger
+  ScrollTrigger.scrollerProxy("#main", {
+    scrollTop(value) {
+      return arguments.length
+        ? scrollInstance.scrollTo(value, 0, 0)
+        : scrollInstance.scroll.instance.scroll.y;
+    },
+    getBoundingClientRect() {
+      return {
+        top: 0,
+        left: 0,
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+    },
+    pinType: document.querySelector("#main").style.transform ? "transform" : "fixed",
+  });
+
+  ScrollTrigger.addEventListener("refresh", () => scrollInstance.update());
+  ScrollTrigger.refresh();
+
+  // Setup scroll animations
+  animateScrollElements();
+
+  // Refresh LocomotiveScroll once all images/resources load
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      scrollInstance.update();
+      ScrollTrigger.refresh();
+    }, 500);
+  });
+}
+
+function animateScrollElements() {
+  // Entrance animation for Feat Items cards (.cnt)
+  gsap.to("#work .cnt", {
+    scrollTrigger: {
+      trigger: "#work .all-works",
+      scroller: "#main",
+      start: "top 75%",
+      toggleActions: "play none none none",
+    },
+    y: 0,
+    opacity: 1,
+    duration: 1.2,
+    stagger: 0.2,
+    ease: "power3.out",
+  });
+
+  // Entrance animation for Case Studies featured card
+  gsap.to(".cs-featured-card", {
+    scrollTrigger: {
+      trigger: ".cs-featured-card",
+      scroller: "#main",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    y: 0,
+    opacity: 1,
+    duration: 1.2,
+    ease: "power3.out",
+  });
+
+  // Entrance animation for Case Studies grid cards
+  gsap.to(".cs-grid .cs-card", {
+    scrollTrigger: {
+      trigger: ".cs-grid",
+      scroller: "#main",
+      start: "top 80%",
+      toggleActions: "play none none none",
+    },
+    y: 0,
+    opacity: 1,
+    duration: 1.2,
+    stagger: 0.15,
+    ease: "power3.out",
   });
 }
 
@@ -92,6 +176,12 @@ function loaderAnimation() {
       ease: Expo.easeIn,
       onComplete: function () {
         animateHomepage();
+        // Update locomotive scroll calculation once loader leaves
+        if (typeof scrollInstance !== "undefined" && scrollInstance) {
+          setTimeout(() => {
+            scrollInstance.update();
+          }, 200);
+        }
       },
     });
 }
@@ -106,8 +196,17 @@ function updateIndiaTime() {
   };
 
   const time = new Date().toLocaleTimeString("en-IN", options);
+  const timeStr = "MY LOCAL TIME " + time;
 
-  document.getElementById("india-time").innerText = "MY LOCAL TIME " + time;
+  const timeEl = document.getElementById("india-time");
+  if (timeEl) {
+    const childSpan = timeEl.querySelector(".child");
+    if (childSpan) {
+      childSpan.innerText = timeStr;
+    } else {
+      timeEl.innerText = timeStr;
+    }
+  }
 }
 
 updateIndiaTime();
@@ -208,9 +307,6 @@ function cardHover() {
 
     cnt.addEventListener("mousemove", handleMove);
     cnt.addEventListener("mouseleave", handleLeave);
-    cnt.addEventListener("touchstart", handleMove);
-    cnt.addEventListener("touchend", handleLeave);
-    cnt.addEventListener("touchmove", handleMove);
   });
 }
 

@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Studies - Adarsh Gachha</title>
+    <link rel="shortcut icon" href="icon/android-chrome-192x192.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        /* Specific page overrides for Case Studies page */
+        body {
+            background-color: #fcfaf8;
+            color: #111111;
+            font-family: 'gilroy', sans-serif;
+            overflow-x: hidden;
+        }
+
+        #cs-page-wrapper {
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        /* Nav override for case studies */
+        .cs-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 100px;
+            padding: 0 8vw;
+            position: sticky;
+            top: 0;
+            background-color: rgba(252, 250, 248, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .cs-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #111111;
+        }
+
+        .cs-nav-logo-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .cs-nav-logo span {
+            font-family: 'gilroy', sans-serif;
+            font-weight: 900;
+            font-size: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .cs-nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .cs-nav-links a {
+            text-decoration: none;
+            font-family: 'gilroy', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #111111;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease;
+        }
+
+        .cs-nav-links a:hover {
+            color: #4b4ffc;
+        }
+
+        .cs-back-home {
+            border: 1px solid #111111;
+            padding: 8px 18px;
+            border-radius: 50px;
+            transition: all 0.25s ease !important;
+        }
+
+        .cs-back-home:hover {
+            background-color: #111111;
+            color: #ffffff !important;
+        }
+
+        /* Hero section layout */
+        .cs-hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 8vw 60px 8vw;
+            gap: 60px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .cs-hero-left {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .cs-hero-title-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .cs-hero-line {
+            width: 5px;
+            height: 90px;
+            background-color: #e63946;
+            border-radius: 10px;
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+
+        .cs-hero-left h1 {
+            font-family: 'gilroy', sans-serif;
+            font-size: 4.2vw;
+            font-weight: 900;
+            line-height: 1.1;
+            color: #111111;
+            margin: 0;
+        }
+
+        .cs-hero-left h1 span {
+            color: #e63946;
+        }
+
+        .cs-hero-left p {
+            font-family: 'gilroy', sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #555555;
+            margin: 0;
+        }
+
+        .cs-hero-right {
+            width: 45%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Isometric 3D Document/Folder Stack */
+        .cs-illustration-container {
+            width: 320px;
+            height: 320px;
+            position: relative;
+            transform: perspective(800px) rotateX(15deg) rotateY(-15deg);
+            transform-style: preserve-3d;
+        }
+
+        .cs-isometric-card {
+            position: absolute;
+            width: 200px;
+            height: 240px;
+            background: #ffffff;
+            border: 2px solid #111111;
+            border-radius: 16px;
+            box-shadow: 15px 15px 0px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            transition: transform 0.4s ease;
+        }
+
+        .cs-isometric-card.card-base {
+            background-color: #ede7dd;
+            transform: translate3d(0, 0, 0);
+            z-index: 1;
+        }
+
+        .cs-isometric-card.card-mid {
+            background-color: #4b4ffc;
+            transform: translate3d(25px, -25px, 20px);
+            z-index: 2;
+            color: white;
+            border-color: #111111;
+        }
+
+        .cs-isometric-card.card-top {
+            background-color: #ffffff;
+            transform: translate3d(50px, -50px, 40px);
+            z-index: 3;
+            animation: floatTop 4s ease-in-out infinite;
+        }
+
+        @keyframes floatTop {
+
+            0%,
+            100% {
+                transform: translate3d(50px, -50px, 40px);
+            }
+
+            50% {
+                transform: translate3d(50px, -65px, 45px);
+            }
+        }
+
+        .cs-card-icon-box {
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            background-color: rgba(17, 17, 17, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-mid .cs-card-icon-box {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .cs-card-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+        .cs-card-line {
+            height: 6px;
+            background-color: #111111;
+            border-radius: 3px;
+            opacity: 0.15;
+        }
+
+        .cs-card-line.short {
+            width: 60%;
+        }
+
+        .cs-card-line.medium {
+            width: 85%;
+        }
+
+        .card-mid .cs-card-line {
+            background-color: #ffffff;
+        }
+
+        /* Stats block redesigned */
+        .cs-stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border: none;
+            padding: 40px 8vw 60px 8vw;
+            background-color: transparent;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .cs-stat-item {
+            text-align: center;
+        }
+
+        .cs-stat-num {
+            font-family: 'gilroy', sans-serif;
+            font-size: 3.2vw;
+            font-weight: 800;
+            color: #e63946;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .cs-stat-label {
+            font-family: 'gilroy', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: #666666;
+            letter-spacing: 0.5px;
+        }
+
+        /* Filter Tabs layout redesigned */
+        .cs-filter-section {
+            padding: 80px 8vw 30px 8vw;
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 40px;
+        }
+
+        .cs-filter-header {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .cs-filter-header span {
+            font-family: 'gilroy', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: #e63946;
+            background-color: rgba(230, 57, 70, 0.08);
+            padding: 6px 16px;
+            border-radius: 50px;
+            align-self: flex-start;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cs-filter-header h2 {
+            font-family: 'gilroy', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: #111111;
+            line-height: 1.15;
+            margin: 0;
+        }
+
+        .cs-filter-tabs {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            border: none;
+            padding-bottom: 0;
+        }
+
+        .cs-filter-tab {
+            background: transparent;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-family: 'gilroy', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: #666666;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .cs-filter-tab:hover {
+            color: #111111;
+            background-color: rgba(0, 0, 0, 0.04);
+        }
+
+        .cs-filter-tab.active {
+            background-color: #e63946;
+            color: #ffffff;
+        }
+
+        /* Case Studies Grid redesigned */
+        .cs-page-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            padding: 40px 8vw 100px 8vw;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .cs-page-card {
+            display: flex;
+            flex-direction: column;
+            background-color: #ffffff;
+            border-radius: 24px;
+            border: none;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .cs-page-card:hover {
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .cs-page-card-img {
+            width: 100%;
+            height: 320px;
+            overflow: hidden;
+            background-color: #f5f5f7;
+            border-bottom: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .cs-page-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .cs-page-card:hover .cs-page-card-img img {
+            transform: scale(1.08);
+        }
+
+        .cs-page-card-content {
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex-grow: 1;
+        }
+
+        .cs-page-card h3 {
+            font-family: 'gilroy', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            color: #111111;
+            margin: 0;
+        }
+
+        .cs-page-card p {
+            font-family: 'gilroy', sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #666666;
+            margin: 0;
+            flex-grow: 1;
+        }
+
+        .cs-page-card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .cs-page-card-tag {
+            font-family: 'gilroy', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: #666666;
+            background-color: #f2f2f5;
+            padding: 6px 14px;
+            border-radius: 50px;
+            text-transform: none;
+            letter-spacing: 0.5px;
+        }
+
+        /* Load More button redesigned */
+        .cs-load-more-container {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 120px;
+        }
+
+        .cs-load-more-btn {
+            background-color: #111111;
+            color: #ffffff;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 36px;
+            font-family: 'gilroy', sans-serif;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background-color 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cs-load-more-btn:hover {
+            background-color: #e63946;
+        }
+
+        .cs-load-more-btn i {
+            font-size: 16px;
+            transition: transform 0.4s ease;
+        }
+
+        .cs-load-more-btn:hover i {
+            transform: rotate(180deg);
+        }
+
+        /* Dynamic Grid Filtering Transitions */
+        .cs-page-card.hide {
+            display: none;
+        }
+
+        /* Responsive Breakpoints */
+        @media screen and (max-width: 991px) {
+            .cs-hero {
+                flex-direction: column-reverse;
+                gap: 50px;
+                text-align: center;
+                padding-top: 50px;
+            }
+
+            .cs-hero-left {
+                width: 100%;
+                align-items: center;
+            }
+
+            .cs-hero-title-container {
+                align-items: center;
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .cs-hero-line {
+                width: 50px;
+                height: 5px;
+                margin-top: 0;
+            }
+
+            .cs-hero-right {
+                width: 100%;
+            }
+
+            .cs-hero-left h1 {
+                font-size: 38px;
+            }
+
+            .cs-stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+                padding: 40px 8vw;
+            }
+
+            .cs-stat-num {
+                font-size: 32px;
+            }
+
+            .cs-filter-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 25px;
+                padding-top: 50px;
+            }
+
+            .cs-filter-tabs {
+                justify-content: flex-start;
+                width: 100%;
+            }
+
+            .cs-page-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding-bottom: 60px;
+            }
+
+            .cs-page-card-img {
+                height: 260px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .cs-hero {
+                padding: 40px 20px;
+            }
+
+            .cs-stats-container {
+                padding: 40px 20px;
+            }
+
+            .cs-filter-section {
+                padding: 60px 20px 0 20px;
+            }
+
+            .cs-page-grid {
+                padding: 30px 20px 80px 20px;
+            }
+
+            .cs-page-card-content {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cs-page-wrapper">
+
+        <!-- Navigation Menu -->
+        <nav class="cs-nav">
+            <a href="index.html" class="cs-nav-logo">
+                <svg class="cs-nav-logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="8" width="28" height="24" rx="5" fill="#111111" />
+                    <path d="M18 8 L18 3" stroke="#111111" stroke-width="3" stroke-linecap="round" />
+                    <circle cx="18" cy="2" r="2.5" fill="#111111" />
+                    <ellipse cx="13" cy="19" rx="5" ry="5" fill="white" />
+                    <circle cx="13" cy="19" r="2" fill="#111111" />
+                    <ellipse cx="23" cy="19" rx="5" ry="5" fill="white" />
+                    <circle cx="23" cy="19" r="2" fill="#111111" />
+                    <path d="M15 26 Q18 29 21 26" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                        fill="none" />
+                </svg>
+                <span>ADARSH</span>
+            </a>
+            <div class="cs-nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#work">Work</a>
+                <a href="index.html#page2">UX Projects</a>
+                <a href="index.html#journey">Journey</a>
+                <a href="index.html" class="cs-back-home">Back To Home</a>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="cs-hero">
+            <div class="cs-hero-left">
+                <div class="cs-hero-title-container">
+                    <div class="cs-hero-line"></div>
+                    <h1>Case <br><span>Study.</span></h1>
+                </div>
+                <p>Every site tells a unique story.</p>
+                <p>Over Eleven years, we have progressed and involved in hundreds of web and mobile application
+                    projects, ranging from UI/UX design to SaaS applications. Our work has enhanced us and helped us
+                    grow. Our exposure, creativity, and passion result in your success. Here follows an in-depth
+                    analysis of our work, methods, and how we transpire ideas into reality.</p>
+                <p>Explore the diversity of our work, and know our ways to attract, engage, and inspire.</p>
+            </div>
+
+            <div class="cs-hero-right">
+                <!-- 3D stack of folder cards -->
+                <img src="./Case study Images/Hero Image.png" alt="">
+                <!-- <div class="cs-illustration-container">
+                    <div class="cs-isometric-card card-base">
+                        <div class="cs-card-icon-box">📂</div>
+                        <div class="cs-card-lines">
+                            <div class="cs-card-line short"></div>
+                            <div class="cs-card-line medium"></div>
+                        </div>
+                    </div>
+                    <div class="cs-isometric-card card-mid">
+                        <div class="cs-card-icon-box">⚡</div>
+                        <div class="cs-card-lines">
+                            <div class="cs-card-line medium"></div>
+                            <div class="cs-card-line short"></div>
+                        </div>
+                    </div>
+                    <div class="cs-isometric-card card-top">
+                        <div class="cs-card-icon-box">🎨</div>
+                        <div class="cs-card-lines">
+                            <div class="cs-card-line short"></div>
+                            <div class="cs-card-line medium"></div>
+                            <div class="cs-card-line short"></div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </section>
+
+        <!-- Statistics Block -->
+        <section class="cs-stats-container">
+            <div class="cs-stat-item">
+                <div class="cs-stat-num count-stat" data-target="150">0</div>
+                <div class="cs-stat-label">Products shipped</div>
+            </div>
+            <div class="cs-stat-item">
+                <div class="cs-stat-num count-stat colored" data-target="12">0</div>
+                <div class="cs-stat-label">Industries served</div>
+            </div>
+            <div class="cs-stat-item">
+                <div class="cs-stat-num count-stat" data-target="98">0</div>
+                <div class="cs-stat-label">Client retention</div>
+            </div>
+            <div class="cs-stat-item">
+                <div class="cs-stat-num count-stat colored" data-target="11">0</div>
+                <div class="cs-stat-label">Building since 2013</div>
+            </div>
+        </section>
+
+        <!-- Filtering Tabs -->
+        <section class="cs-filter-section">
+            <div class="cs-filter-header">
+                <span>#CaseFiles</span>
+                <h2>Real problems. <br>Real solutions.</h2>
+            </div>
+            <div class="cs-filter-tabs">
+                <button class="cs-filter-tab active" data-filter="all">All</button>
+                <button class="cs-filter-tab" data-filter="salesforce">Salesforce</button>
+                <button class="cs-filter-tab" data-filter="saas">SaaS</button>
+                <button class="cs-filter-tab" data-filter="ecommerce">E-commerce</button>
+                <button class="cs-filter-tab" data-filter="mobile">Mobile App Development</button>
+                <button class="cs-filter-tab" data-filter="web">Web App Development</button>
+            </div>
+        </section>
+
+        <!-- Dynamic Grid of Case Studies -->
+        <section class="cs-page-grid" id="cs-grid">
+
+            <!-- Case Study 1 -->
+            <a href="https://www.figma.com/design/4GOLn03pFINRmiteIADeZi/Rise-pathway?node-id=0-1&t=6y7PmmWknEmADlgu-1"
+                target="_blank" class="cs-page-card" data-categories="mobile saas">
+                <div class="cs-page-card-img">
+                    <img src="img1.png" alt="Rise Pathway">
+                </div>
+                <div class="cs-page-card-content">
+                    <h3>Rise Pathway</h3>
+                    <p>A mood-driven platform that captures daily emotions, analyzes patterns over time, and provides
+                        personalized suggestions, challenges, and insights to help users build a healthier mental
+                        routine.</p>
+                    <div class="cs-page-card-meta">
+                        <span class="cs-page-card-tag">Mobile App</span>
+                        <span class="cs-page-card-tag">Website</span>
+                        <span class="cs-page-card-tag">SaaS</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Case Study 2 -->
+            <a href="https://www.figma.com/design/Xyr4BNlwpRzdFMrOox5N5F/WoofyCare--Dog-Walking-Application?node-id=0-1&t=UHCXCH1fO7vffMW3-1"
+                target="_blank" class="cs-page-card" data-categories="mobile">
+                <div class="cs-page-card-img">
+                    <img src="img5.png" alt="WoofyCare">
+                </div>
+                <div class="cs-page-card-content">
+                    <h3>WoofyCare</h3>
+                    <p>Connecting busy pet parents with local, vetted professional dog walkers. Streamlines search, GPS
+                        tracking, and scheduling through a minimal and friendly interface.</p>
+                    <div class="cs-page-card-meta">
+                        <span class="cs-page-card-tag">Mobile App</span>
+                        <span class="cs-page-card-tag">Website</span>
+                        <span class="cs-page-card-tag">SaaS</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Case Study 3 -->
+            <a href="https://www.figma.com/design/s6CBG2mFcAhqpPpRuqEXT4/Home-service-app?node-id=171-67&t=PyH1577XVNvv4Vcv-1"
+                target="_blank" class="cs-page-card" data-categories="mobile ecommerce">
+                <div class="cs-page-card-img">
+                    <img src="img2.png" alt="Private Jet App">
+                </div>
+                <div class="cs-page-card-content">
+                    <h3>Private Jet Booking App</h3>
+                    <p>A luxury booking and flight-sharing application designed for private jet chartering. Features custom flight search, real-time aircraft tracking, instant booking, and premium concierge services.</p>
+                    <div class="cs-page-card-meta">
+                        <span class="cs-page-card-tag">Mobile App</span>
+                        <span class="cs-page-card-tag">Website</span>
+                        <span class="cs-page-card-tag">SaaS</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Case Study 4 -->
+            <a href="https://www.figma.com/design/JdNk77q07V5W3XXWqKHzgm/Motorcar-Web-UI?node-id=0-1&t=KxpUNRWe0TFztTwr-1"
+                target="_blank" class="cs-page-card" data-categories="web salesforce">
+                <div class="cs-page-card-img">
+                    <img src="img3.png" alt="Motorcar Web UI">
+                </div>
+                <div class="cs-page-card-content">
+                    <h3>Motorcar Luxury Web UI</h3>
+                    <p>Immersive digital dealership experience featuring custom 3D car configurations, interactive
+                        brochures, dealer scheduling, and online payment integration built for luxury sports cars.</p>
+                    <div class="cs-page-card-meta">
+                        <span class="cs-page-card-tag">Mobile App</span>
+                        <span class="cs-page-card-tag">Website</span>
+                        <span class="cs-page-card-tag">SaaS</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Case Study 5 -->
+            <a href="#" class="cs-page-card" data-categories="mobile saas">
+                <div class="cs-page-card-img">
+                    <img src="img4.png" alt="Humble Cow">
+                </div>
+                <div class="cs-page-card-content">
+                    <h3>Humble Cow</h3>
+                    <p>Extensive field UX research and app layout redesign aiming to help modern farmers track cattle
+                        health, log daily feed cycles, analyze crop outputs, and calculate rental margins.</p>
+                    <div class="cs-page-card-meta">
+                        <span class="cs-page-card-tag">Mobile App</span>
+                        <span class="cs-page-card-tag">Website</span>
+                        <span class="cs-page-card-tag">SaaS</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Case Study 6 -->
+            <a href="https://www.figma.com/design/cpiG1P8RxHIs7H17aubjYX/GTA-6-ESA-Market-Place?node-id=180-8&t=DGQKYnB3rZRFcUJy-1"
+                target="_blank" class="cs-page-card" data-categories="web saas ecommerce">
+                <div class="cs-page-card-img">
+                    <img src="img6.png" alt="GTA 6 ESA Marketplace">
+                </div>
+                <div class="cs-page-card-content">
+                    <h3>GTA 6 ESA Marketplace UI</h3>
+                    <p>A gaming asset e-commerce exchange marketplace designed for gamers to buy, sell, and trade
+                        high-value virtual property, cosmetic items, and digital accounts safely with zero friction.</p>
+                    <div class="cs-page-card-meta">
+                        <span class="cs-page-card-tag">Mobile App</span>
+                        <span class="cs-page-card-tag">Website</span>
+                        <span class="cs-page-card-tag">SaaS</span>
+                    </div>
+                </div>
+            </a>
+
+        </section>
+
+        <!-- Load More Trigger -->
+        <div class="cs-load-more-container">
+            <button class="cs-load-more-btn" id="load-more-btn">
+                <span>Load More</span>
+                <i class="ri-refresh-line"></i>
+            </button>
+        </div>
+
+        <!-- ==========================================
+             NEW FOOTER DESIGN (GIGS-STYLE)
+             ========================================== -->
+        <div id="footer-section">
+            <!-- Diagonal blue background shape -->
+            <div class="footer-bg-shape"></div>
+
+            <div class="footer-container">
+                <!-- Cartoon characters peeking from behind/front of the card -->
+                <!-- Char 1: Big head on the left -->
+                <svg class="footer-char char-1" viewBox="0 0 150 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M45 40 L15 10" stroke="#111111" stroke-width="8" stroke-linecap="round" />
+                    <circle cx="12" cy="7" r="5" fill="#111111" />
+                    <circle cx="80" cy="80" r="60" fill="#111111" />
+                    <circle cx="95" cy="55" r="18" fill="white" />
+                    <circle cx="98" cy="55" r="7" fill="#111111" />
+                    <circle cx="125" cy="62" r="18" fill="white" />
+                    <circle cx="122" cy="62" r="7" fill="#111111" />
+                </svg>
+
+                <!-- Char 2: Standing middle robot -->
+                <svg class="footer-char char-2" viewBox="0 0 60 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M30 30 L30 10" stroke="#111111" stroke-width="4" stroke-linecap="round" />
+                    <circle cx="30" cy="6" r="4" fill="#111111" />
+                    <path d="M22 65 L22 88" stroke="#111111" stroke-width="4" stroke-linecap="round" />
+                    <path d="M38 65 L38 88" stroke="#111111" stroke-width="4" stroke-linecap="round" />
+                    <path d="M16 88 L24 88" stroke="#111111" stroke-width="4" stroke-linecap="round" />
+                    <path d="M36 88 L44 88" stroke="#111111" stroke-width="4" stroke-linecap="round" />
+                    <rect x="12" y="25" width="36" height="42" rx="18" fill="#111111" />
+                    <circle cx="23" cy="40" r="6" fill="white" />
+                    <circle cx="23" cy="40" r="2.5" fill="#111111" />
+                    <circle cx="37" cy="40" r="6" fill="white" />
+                    <circle cx="37" cy="40" r="2.5" fill="#111111" />
+                    <path d="M22 54 Q30 60 38 54" stroke="white" stroke-width="2.5" stroke-linecap="round"
+                        fill="none" />
+                    <path d="M12 40 C 2 42, 0 52, 5 58" stroke="#111111" stroke-width="4" stroke-linecap="round"
+                        fill="none" />
+                    <path d="M48 40 C 58 42, 60 52, 55 58" stroke="#111111" stroke-width="4" stroke-linecap="round"
+                        fill="none" />
+                </svg>
+
+                <!-- Char 3: Flying blue creature -->
+                <svg class="footer-char char-3" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M40 30 L45 12" stroke="#111111" stroke-width="4" stroke-linecap="round" />
+                    <circle cx="46" cy="8" r="3.5" fill="#111111" />
+                    <path d="M20 40 C 5 30, 0 45, 10 50" stroke="#111111" stroke-width="4" stroke-linecap="round"
+                        fill="none" />
+                    <path d="M60 40 C 75 30, 80 45, 70 50" stroke="#111111" stroke-width="4" stroke-linecap="round"
+                        fill="none" />
+                    <circle cx="40" cy="45" r="22" fill="#4b4ffc" stroke="#111111" stroke-width="3" />
+                    <circle cx="32" cy="42" r="5" fill="white" />
+                    <circle cx="32" cy="42" r="2" fill="#111111" />
+                    <circle cx="48" cy="42" r="5" fill="white" />
+                    <circle cx="48" cy="42" r="2" fill="#111111" />
+                    <path d="M36 52 Q40 56 44 52" stroke="#111111" stroke-width="2" stroke-linecap="round"
+                        fill="none" />
+                    <path d="M30 65 C 28 75, 20 78, 15 78" stroke="#111111" stroke-width="3.5" stroke-linecap="round"
+                        fill="none" />
+                    <path d="M50 65 C 52 75, 60 78, 65 78" stroke="#111111" stroke-width="3.5" stroke-linecap="round"
+                        fill="none" />
+                </svg>
+
+                <!-- Char 4: Bottom-right peeking robot -->
+                <svg class="footer-char char-4" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 50 L58 15" stroke="#111111" stroke-width="5" stroke-linecap="round" />
+                    <circle cx="60" cy="10" r="4.5" fill="#111111" />
+                    <circle cx="50" cy="70" r="40" fill="#111111" />
+                    <circle cx="38" cy="62" r="10" fill="white" />
+                    <circle cx="35" cy="62" r="4" fill="#111111" />
+                    <circle cx="62" cy="62" r="10" fill="white" />
+                    <circle cx="59" cy="62" r="4" fill="#111111" />
+                    <path d="M38 78 Q50 86 62 78" stroke="white" stroke-width="3" stroke-linecap="round" fill="none" />
+                </svg>
+
+                <!-- Char 5: Bottom-middle peeking robot -->
+                <svg class="footer-char char-5" viewBox="0 0 80 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 50 C 10 15, 70 15, 70 50 Z" fill="#4b4ffc" stroke="#111111" stroke-width="3" />
+                    <circle cx="30" cy="35" r="6" fill="white" />
+                    <circle cx="30" cy="35" r="2.5" fill="#111111" />
+                    <circle cx="50" cy="35" r="6" fill="white" />
+                    <circle cx="50" cy="35" r="2.5" fill="#111111" />
+                </svg>
+
+                <!-- White footer card -->
+                <div class="footer-card">
+                    <div class="footer-card-top">
+                        <!-- Logo -->
+                        <div class="footer-logo">
+                            <svg class="footer-logo-icon" viewBox="0 0 36 36" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect x="4" y="8" width="28" height="24" rx="5" fill="#111111" />
+                                <path d="M18 8 L18 3" stroke="#111111" stroke-width="3" stroke-linecap="round" />
+                                <circle cx="18" cy="2" r="2.5" fill="#111111" />
+                                <path d="M4 22 C -1 20, -2 28, -2 28 M32 22 C 37 20, 38 28, 38 28" stroke="#111111"
+                                    stroke-width="2.5" stroke-linecap="round" />
+                                <ellipse cx="13" cy="19" rx="5" ry="5" fill="white" />
+                                <circle cx="13" cy="19" r="2" fill="#111111" />
+                                <ellipse cx="23" cy="19" rx="5" ry="5" fill="white" />
+                                <circle cx="23" cy="19" r="2" fill="#111111" />
+                                <path d="M15 26 Q18 29 21 26" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    fill="none" />
+                            </svg>
+                            <span class="logo-text">ADARSH</span>
+                        </div>
+
+                        <!-- Nav Columns -->
+                        <div class="footer-nav-cols">
+                            <div class="footer-nav-col">
+                                <h4>For Projects</h4>
+                                <a href="#">Why Adarsh?</a>
+                                <a href="index.html#work">How it works</a>
+                                <a href="index.html#page2">UX Projects</a>
+                                <a href="./Resume/Adarsh_Gachha_Resume.pdf" download>Resume</a>
+                            </div>
+                            <div class="footer-nav-col">
+                                <h4>Discover</h4>
+                                <a href="index.html#work">Talent by role</a>
+                                <a href="index.html#page2">Mission by role</a>
+                            </div>
+                            <div class="footer-nav-col">
+                                <h4>Social media</h4>
+                                <a href="https://www.linkedin.com/in/adarshgachha" target="_blank">LinkedIn</a>
+                                <a href="https://github.com/iammradarsh" target="_blank">GitHub</a>
+                                <a href="https://bento.me/adarsh-gachha" target="_blank">Bento</a>
+                                <a href="https://www.instagram.com/iammradarsh/" target="_blank">Instagram</a>
+                            </div>
+                        </div>
+
+                        <!-- Contact Button -->
+                        <div class="footer-btn-wrapper">
+                            <a class="footer-contact-btn"
+                                href="https://mail.google.com/mail/?view=cm&fs=1&to=adarshgachha@gmail.com"
+                                target="_blank">
+                                Contact us
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Bottom bar inside the white card (No borders, just space layout) -->
+                    <div class="footer-card-bottom">
+                        <div class="footer-copyright">
+                            <p>&copy; 2026 ADARSH &mdash; Join The Colony!</p>
+                            <p>Creative Frontend Developer &amp; UI/UX Designer</p>
+                        </div>
+                        <div class="footer-support">
+                            <a href="https://bento.me/adarsh-gachha" target="_blank">Help &amp; Support</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Scripts for dynamic filtering and animations -->
+    <script>
+        // Tab Filtering Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.cs-filter-tab');
+            const cards = document.querySelectorAll('.cs-page-card');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Toggle active tab class
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    const filterValue = tab.getAttribute('data-filter');
+
+                    // Filter cards
+                    cards.forEach(card => {
+                        const categories = card.getAttribute('data-categories').split(' ');
+
+                        if (filterValue === 'all' || categories.includes(filterValue)) {
+                            card.classList.remove('hide');
+                            // Add fade in animation
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(10px)';
+                            setTimeout(() => {
+                                card.style.transition = 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 50);
+                        } else {
+                            card.classList.add('hide');
+                        }
+                    });
+                });
+            });
+
+            // Smooth Stats counting animation on load
+            const counters = document.querySelectorAll('.count-stat');
+
+            const animateCounters = () => {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const speed = 60; // smaller is faster
+
+                    const updateCount = () => {
+                        const count = +counter.innerText;
+                        const increment = Math.ceil(target / speed);
+
+                        if (count < target) {
+                            counter.innerText = count + increment;
+                            setTimeout(updateCount, 25);
+                        } else {
+                            if (target === 98) {
+                                counter.innerText = '98%';
+                            } else if (target === 12) {
+                                counter.innerText = '12';
+                            } else if (target === 11) {
+                                counter.innerText = '11 Years';
+                            } else {
+                                counter.innerText = target + '+';
+                            }
+                        }
+                    };
+
+                    updateCount();
+                });
+            };
+
+            // Trigger counting after loader or immediately on DOM ready
+            setTimeout(animateCounters, 300);
+
+            // Simple Load More Mock Interaction (Clean, instantly shows notification or logs)
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            loadMoreBtn.addEventListener('click', () => {
+                loadMoreBtn.innerText = 'All projects loaded';
+                loadMoreBtn.style.backgroundColor = '#666666';
+                loadMoreBtn.style.cursor = 'default';
+                loadMoreBtn.disabled = true;
+            });
+        });
+    </script>
+</body>
+
+</html>
