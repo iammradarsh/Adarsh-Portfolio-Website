@@ -316,6 +316,49 @@ loaderAnimation();
 cardHover();
 locoIntialize();
 
+// Mobile drawer nav (markup is hidden above 768px by CSS)
+function mobileDrawer() {
+  var toggle = document.querySelector("#mobile-nav-toggle");
+  var drawer = document.querySelector("#mobile-drawer");
+  var overlay = document.querySelector("#drawer-overlay");
+  if (!toggle || !drawer) return;
+
+  function setOpen(open) {
+    toggle.classList.toggle("is-open", open);
+    drawer.classList.toggle("is-open", open);
+    if (overlay) overlay.classList.toggle("is-open", open);
+    document.body.classList.toggle("drawer-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    drawer.setAttribute("aria-hidden", String(!open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+
+  toggle.addEventListener("click", function () {
+    setOpen(!drawer.classList.contains("is-open"));
+  });
+
+  if (overlay) {
+    overlay.addEventListener("click", function () {
+      setOpen(false);
+    });
+  }
+
+  drawer.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      setOpen(false);
+    });
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") setOpen(false);
+  });
+
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 768) setOpen(false);
+  });
+}
+mobileDrawer();
+
 function slideCircle() {
   document.querySelectorAll(".slide").forEach(function (elem) {
     elem.addEventListener("mousemove", function (dets) {
