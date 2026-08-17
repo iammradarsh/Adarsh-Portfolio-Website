@@ -1666,6 +1666,65 @@ polyline {
   .footer-char.char-3 {
     right: 28%;
   }
+
+  /* ---------- Thoughts / imagery (tablet) ---------- */
+  #imagery {
+    align-items: center;
+    gap: 4vw;
+    padding: 0 6vw;
+    margin-top: 14vw;
+  }
+
+  #imagery #imglef {
+    width: 38%;
+  }
+
+  #imglef h1 {
+    font-size: clamp(13px, 2.7vw, 20px);
+    line-height: 1.5;
+  }
+
+  /* Give the stack a real box so the cards stop spilling into
+     the neighbouring sections, and size the cards off that box. */
+  #imagery #imgrig {
+    display: block;
+    width: 58%;
+    height: auto;
+    aspect-ratio: 1 / 0.95;
+    margin-top: 0;
+  }
+
+  #imgrig .imgcntnr {
+    top: 50%;
+    left: 50%;
+    width: 46%;
+    height: 75%;
+    border-radius: clamp(10px, 2.2vw, 22px);
+    filter: grayscale(0);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+  }
+
+  #imgrig .imgcntnr:nth-child(1) {
+    top: 42%;
+    left: 25%;
+    transform: translate(-50%, -50%) rotate(-8deg);
+  }
+
+  #imgrig .imgcntnr:nth-child(2) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-3deg);
+  }
+
+  #imgrig .imgcntnr:nth-child(3) {
+    top: 58%;
+    left: 75%;
+    transform: translate(-50%, -50%) rotate(4deg);
+  }
+
+  #work {
+    padding-top: 200px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -1772,29 +1831,8 @@ polyline {
     font-size: 2.5vw;
   }
 
-  #imagery {
-    height: 100vmin;
-    margin-top: 5vw;
-    flex-direction: column;
-  }
-
-  #imagery #imglef {
-    width: auto;
-  }
-
-  #imglef h1 {
-    font-size: 4vw;
-  }
-
-  #imgrig {
-    margin-top: 10vw;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    width: 60%;
-  }
+  /* #imagery / #imgrig for this range is handled in the
+     max-width: 768px block below. */
 
   #work .all-works {
     margin-top: 25px;
@@ -1839,14 +1877,8 @@ polyline {
     padding: 0;
   }
 
-  #projects {
-    min-height: 25vh;
-    padding: 0 40px;
-  }
-
-  .slide {
-    width: 100%;
-  }
+  /* #projects / .slide for this range is handled in the
+     max-width: 768px block below. */
 }
 
 @keyframes gradient {
@@ -2168,30 +2200,43 @@ polyline {
     line-height: 1.5;
   }
 
+  /* The stack is sized from its own box (aspect-ratio + % cards) so it
+     scales cleanly on any phone, incl. landscape, without clipping. */
   #imagery #imgrig {
+    display: block;
     width: 100%;
-    height: 118vw;
-    margin-top: 2vw;
+    max-width: min(440px, 78vh);
+    height: auto;
+    aspect-ratio: 1 / 0.95;
+    margin: 0 auto;
   }
 
   #imgrig .imgcntnr {
-    width: 58vw;
-    height: 87vw;
-    border-radius: 7vw;
+    top: 50%;
+    left: 50%;
+    width: 46%;
+    height: 75%;
+    border-radius: clamp(12px, 4vw, 24px);
     filter: grayscale(0);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
   }
 
   #imgrig .imgcntnr:nth-child(1) {
-    transform: translate(-38%, -12%) rotate(-8deg);
+    top: 42%;
+    left: 25%;
+    transform: translate(-50%, -50%) rotate(-8deg);
   }
 
   #imgrig .imgcntnr:nth-child(2) {
-    transform: translate(0%, 0%) rotate(-3deg);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-3deg);
   }
 
   #imgrig .imgcntnr:nth-child(3) {
-    transform: translate(38%, 14%) rotate(3deg);
+    top: 58%;
+    left: 75%;
+    transform: translate(-50%, -50%) rotate(4deg);
   }
 
   /* ---------- Feat Items ---------- */
@@ -2297,15 +2342,19 @@ polyline {
   }
 
   #projects {
-    min-height: 62vh;
+    min-height: 0;
     padding: 0 6vw;
     gap: 24px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
 
+  /* Source images are all landscape (1.33-1.88), so a tall card just
+     crops a narrow strip out of the middle. Height follows the width. */
   .slide {
     width: 82%;
+    aspect-ratio: 4 / 3;
+    min-height: 0;
     border-radius: 12px;
     scroll-snap-align: center;
   }
@@ -2488,5 +2537,25 @@ polyline {
 
   .footer-card-bottom {
     margin-top: 44px;
+  }
+}
+
+/* ---------- Thoughts / imagery (small phones) ---------- */
+/* Screen is narrow, so trade a little spread for bigger cards.
+   Must stay after the 768px block to win the cascade. */
+@media screen and (max-width: 480px) {
+  #imgrig .imgcntnr {
+    width: 52%;
+    height: 76%;
+  }
+
+  #imgrig .imgcntnr:nth-child(1) {
+    top: 41%;
+    left: 28%;
+  }
+
+  #imgrig .imgcntnr:nth-child(3) {
+    top: 59%;
+    left: 72%;
   }
 }
