@@ -27,73 +27,201 @@
             min-height: 100vh;
         }
 
-        /* Nav override for case studies */
-        .cs-nav {
+        /* Nav styles from home page */
+        #nav {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            height: 100px;
-            padding: 0 8vw;
+            gap: 40px;
+            padding: 20px 0;
             position: sticky;
             top: 0;
-            background-color: rgba(252, 250, 248, 0.9);
+            background-color: rgba(252, 250, 248, 0.95);
             backdrop-filter: blur(10px);
             z-index: 100;
+            padding-left: 8vw;
+            padding-right: 8vw;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .cs-nav-logo {
+        #nav a {
+            text-decoration: none;
+            color: #111111;
+            font-family: 'gilroy', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            position: relative;
+            transition: color 0.3s ease;
             display: flex;
             align-items: center;
             gap: 10px;
-            text-decoration: none;
-            color: #111111;
         }
 
-        .cs-nav-logo-icon {
-            width: 32px;
-            height: 32px;
-        }
-
-        .cs-nav-logo span {
-            font-family: 'gilroy', sans-serif;
-            font-weight: 900;
-            font-size: 20px;
-            letter-spacing: -0.5px;
-        }
-
-        .cs-nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .cs-nav-links a {
-            text-decoration: none;
-            font-family: 'gilroy', sans-serif;
-            font-size: 13px;
-            font-weight: 700;
-            color: #111111;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: color 0.2s ease;
-        }
-
-        .cs-nav-links a:hover {
+        #nav a:hover {
             color: #4b4ffc;
         }
 
-        .cs-back-home {
-            border: 1px solid #111111;
-            padding: 8px 18px;
-            border-radius: 50px;
-            transition: all 0.25s ease !important;
+        #nav a:hover .line {
+            width: 100%;
+            background-color: #4b4ffc;
         }
 
-        .cs-back-home:hover {
+        .line {
+            position: absolute;
+            height: 3px;
             background-color: #111111;
-            color: #ffffff !important;
+            transition: width 0.3s ease;
+            bottom: -5px;
+        }
+
+        #line1 {
+            width: 0%;
+        }
+
+        #line2 {
+            width: 0%;
+        }
+
+        /* Mobile nav toggle */
+        #mobile-nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 101;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        #mobile-nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #111111;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        #mobile-nav-toggle[aria-expanded="true"] span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        #mobile-nav-toggle[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+        }
+
+        #mobile-nav-toggle[aria-expanded="true"] span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        #drawer-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+
+        #mobile-drawer {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 100vh;
+            background: #fcfaf8;
+            padding: 80px 20px 40px;
+            overflow-y: auto;
+            z-index: 100;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .drawer-label {
+            font-weight: 700;
+            font-size: 12px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .drawer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .drawer-links a {
+            text-decoration: none;
+            color: #111111;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.2s;
+        }
+
+        .drawer-links a:hover {
+            color: #4b4ffc;
+        }
+
+        .drawer-foot {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .drawer-status {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        .drawer-socials {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .drawer-socials a {
+            font-size: 13px;
+            font-weight: 600;
+            color: #111111;
+        }
+
+        .drawer-contact-btn {
+            background-color: #111111;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            transition: background-color 0.2s;
+        }
+
+        .drawer-contact-btn:hover {
+            background-color: #4b4ffc;
+        }
+
+        @media screen and (max-width: 768px) {
+            #mobile-nav-toggle {
+                display: flex;
+            }
+
+            #nav {
+                display: none;
+            }
+
+            #mobile-drawer[aria-hidden="false"] {
+                display: flex;
+            }
+
+            #drawer-overlay[style*="display: block"] {
+                display: block !important;
+            }
         }
 
         /* Hero section layout */
@@ -587,30 +715,58 @@
 <body>
     <div id="cs-page-wrapper">
 
-        <!-- Navigation Menu -->
-        <nav class="cs-nav">
-            <a href="index.html" class="cs-nav-logo">
-                <svg class="cs-nav-logo-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="4" y="8" width="28" height="24" rx="5" fill="#111111" />
-                    <path d="M18 8 L18 3" stroke="#111111" stroke-width="3" stroke-linecap="round" />
-                    <circle cx="18" cy="2" r="2.5" fill="#111111" />
-                    <ellipse cx="13" cy="19" rx="5" ry="5" fill="white" />
-                    <circle cx="13" cy="19" r="2" fill="#111111" />
-                    <ellipse cx="23" cy="19" rx="5" ry="5" fill="white" />
-                    <circle cx="23" cy="19" r="2" fill="#111111" />
-                    <path d="M15 26 Q18 29 21 26" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                        fill="none" />
-                </svg>
-                <span>ADARSH</span>
-            </a>
-            <div class="cs-nav-links">
+        <!-- ==========================================
+             MOBILE NAV (visible only ≤768px via CSS)
+             ========================================== -->
+        <button id="mobile-nav-toggle" aria-label="Open menu" aria-expanded="false"
+            aria-controls="mobile-drawer">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div id="drawer-overlay"></div>
+        <aside id="mobile-drawer" aria-hidden="true">
+            <span class="drawer-label">Menu</span>
+            <nav class="drawer-links">
                 <a href="index.html">Home</a>
-                <a href="index.html#work">Work</a>
+                <a href="index.html#work">Feat Items</a>
                 <a href="index.html#page2">UX Projects</a>
-                <a href="index.html#journey">Journey</a>
-                <a href="index.html" class="cs-back-home">Back To Home</a>
+                <a href="index.html#journey">My Journey</a>
+                <a href="index.html#case-studies-section">Case Studies</a>
+                <a href="./Resume/Adarsh_Gachha_Resume.pdf" download="Adarsh_Gachha_Resume">Resume</a>
+            </nav>
+            <div class="drawer-foot">
+                <span class="drawer-status">CURRENTLY AVAILABLE FOR<br>FREELANCE WORLDWIDE</span>
+                <div class="drawer-socials">
+                    <a href="https://bento.me/adarsh-gachha" target="_blank">Bento</a>
+                    <a href="https://www.linkedin.com/in/adarshgachha" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/iammradarsh" target="_blank">GitHub</a>
+                </div>
+                <a class="drawer-contact-btn"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=adarshgachha@gmail.com"
+                    target="_blank">Contact me</a>
             </div>
-        </nav>
+        </aside>
+
+        <div id="nav">
+            <a href="index.html">
+                Adarsh Gachha
+                <span id="line1" class="line"></span>
+                <span id="line2" class="line"></span>
+            </a>
+            <a href="./Resume/Adarsh_Gachha_Resume.pdf" download="Adarsh_Gachha_Resume">Download Resume
+                <span id="line1" class="line"></span>
+                <span id="line2" class="line"></span>
+            </a>
+            <a href="https://bento.me/adarsh-gachha">Socials - My Bento
+                <span id="line1" class="line"></span>
+                <span id="line2" class="line"></span>
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=adarshgachha@gmail.com">Contact
+                <span id="line1" class="line"></span>
+                <span id="line2" class="line"></span>
+            </a>
+        </div>
 
         <!-- Hero Section -->
         <section class="cs-hero">
@@ -969,6 +1125,38 @@
 
     <!-- Scripts for dynamic filtering and animations -->
     <script>
+        // Mobile Menu Toggle
+        const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+        const drawerLinks = document.querySelectorAll('.drawer-links a');
+
+        function toggleDrawer() {
+            const isOpen = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+            mobileNavToggle.setAttribute('aria-expanded', !isOpen);
+            mobileDrawer.setAttribute('aria-hidden', isOpen);
+
+            if (!isOpen) {
+                mobileDrawer.style.display = 'flex';
+                drawerOverlay.style.display = 'block';
+            } else {
+                mobileDrawer.style.display = 'none';
+                drawerOverlay.style.display = 'none';
+            }
+        }
+
+        mobileNavToggle.addEventListener('click', toggleDrawer);
+        drawerOverlay.addEventListener('click', toggleDrawer);
+
+        drawerLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavToggle.setAttribute('aria-expanded', 'false');
+                mobileDrawer.setAttribute('aria-hidden', 'true');
+                mobileDrawer.style.display = 'none';
+                drawerOverlay.style.display = 'none';
+            });
+        });
+
         // Tab Filtering Logic
         document.addEventListener('DOMContentLoaded', () => {
             const tabs = document.querySelectorAll('.cs-filter-tab');
