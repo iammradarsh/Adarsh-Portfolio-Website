@@ -1052,7 +1052,7 @@ polyline {
 }
 
 .cs-featured-header-block {
-  border-left: 3px solid #52e0ed;
+  border-left: 3px solid #16cf94;
   padding-left: 20px;
   display: flex;
   flex-direction: column;
@@ -1079,7 +1079,7 @@ polyline {
 }
 
 .mood-highlight {
-  color: #52e0ed;
+  color: #16cf94;
 }
 
 .cs-featured-info p {
@@ -1110,7 +1110,7 @@ polyline {
 }
 
 .cs-view-btn:hover {
-  background-color: #52e0ed;
+  background-color: #16cf94;
 }
 
 .cs-btn-arrow {
@@ -1258,7 +1258,7 @@ polyline {
 }
 
 .cs-card:hover .cs-card-corner-arrow {
-  background-color: #52e0ed;
+  background-color: #16cf94;
   color: #ffffff;
 }
 
@@ -1291,7 +1291,7 @@ polyline {
 }
 
 .cs-all-btn:hover {
-  background-color: #52e0ed;
+  background-color: #16cf94;
   transform: scale(1.03);
 }
 
@@ -1445,7 +1445,7 @@ polyline {
   transform: translate(-50%, -50%);
   width: 110%;
   height: 80%;
-  background-color: #4b4ffc;
+  background-color: #383636;
   /* Vibrant GIGS Cobalt Blue */
   clip-path: polygon(0 15%, 100% 0%, 100% 85%, 0 100%);
   z-index: 0;
@@ -1590,7 +1590,7 @@ polyline {
 }
 
 .footer-nav-col a:hover {
-  color: #4b4ffc;
+  color: #383636;
 }
 
 /* Contact button */
