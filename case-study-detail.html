@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study Detail - Adarsh Gachha Portfolio</title>
+    <link rel="shortcut icon" href="icon/android-chrome-192x192.png" type="image/x-icon">
+    
+    <!-- Locomotive Scroll & GSAP -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Dushyant1295/dpkCursor/dpkCursor.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Case Study Detail Page Styles */
+        body {
+            background-color: #fcfaf8;
+            color: #111111;
+        }
+
+        #main {
+            width: 100%;
+        }
+
+        /* ==========================================
+           NAVBAR STYLES (from index.html)
+           ========================================== */
+        #nav {
+            display: flex;
+            gap: 40px;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            background-color: rgba(252, 250, 248, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            padding-left: 8vw;
+            padding-right: 8vw;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        #nav a {
+            text-decoration: none;
+            color: #111111;
+            font-family: 'gilroy', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            position: relative;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #nav a:hover {
+            color: #4b4ffc;
+        }
+
+        #nav a:hover .line {
+            width: 100%;
+            background-color: #4b4ffc;
+        }
+
+        .line {
+            position: absolute;
+            height: 3px;
+            background-color: #111111;
+            transition: width 0.3s ease;
+            bottom: -5px;
+        }
+
+        #line1 {
+            width: 0%;
+        }
+
+        #line2 {
+            width: 0%;
+        }
+
+        /* Mobile nav toggle */
+        #mobile-nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 101;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+
+        #mobile-nav-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #111111;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        #mobile-nav-toggle[aria-expanded="true"] span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        #mobile-nav-toggle[aria-expanded="true"] span:nth-child(2) {
+            opacity: 0;
+        }
+
+        #mobile-nav-toggle[aria-expanded="true"] span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        #drawer-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+
+        #mobile-drawer {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 280px;
+            height: 100vh;
+            background: #fcfaf8;
+            padding: 80px 20px 40px;
+            overflow-y: auto;
+            z-index: 100;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .drawer-label {
+            font-weight: 700;
+            font-size: 12px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .drawer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .drawer-links a {
+            text-decoration: none;
+            color: #111111;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.2s;
+        }
+
+        .drawer-links a:hover {
+            color: #4b4ffc;
+        }
+
+        .drawer-foot {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .drawer-status {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        .drawer-socials {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .drawer-socials a {
+            font-size: 13px;
+            font-weight: 600;
+            color: #111111;
+        }
+
+        .drawer-contact-btn {
+            background-color: #111111;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            text-decoration: none;
+            display: block;
+        }
+
+        .drawer-contact-btn:hover {
+            background-color: #4b4ffc;
+        }
+
+        @media screen and (max-width: 768px) {
+            #mobile-nav-toggle {
+                display: flex;
+            }
+
+            #nav {
+                display: none;
+            }
+
+            #mobile-drawer[aria-hidden="false"] {
+                display: flex;
+            }
+
+            #drawer-overlay[style*="display: block"] {
+                display: block !important;
+            }
+        }
+
+        /* ==========================================
+           CASE STUDY DETAIL PAGE CONTENT
+           ========================================== */
+
+        /* Hero Section */
+        .cs-hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px 8vw 60px 8vw;
+            gap: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cs-hero-left {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .cs-hero-title-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+        }
+
+        .cs-hero-line {
+            width: 5px;
+            height: 90px;
+            background-color: #16cf94;
+            border-radius: 10px;
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+
+        .cs-hero-left h1 {
+            font-family: 'gilroy', sans-serif;
+            font-size: 4.2vw;
+            font-weight: 900;
+            line-height: 1.1;
+            color: #111111;
+            margin: 0;
+        }
+
+        .cs-hero-left h1 span {
+            color: #16cf94;
+        }
+
+        .cs-hero-left p {
+            font-family: 'gilroy', sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #666666;
+            margin: 0;
+            max-width: 450px;
+        }
+
+        .cs-hero-right {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .cs-illustration-container {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+        }
+
+        .cs-illustration-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Project Overview Card */
+        .cs-overview-section {
+            padding: 80px 8vw;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .cs-overview-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ede7dd 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cs-overview-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cs-overview-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .cs-overview-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .cs-overview-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #f2f2f2;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .cs-overview-content h2 {
+            font-family: 'gilroy', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: #111111;
+            margin: 0;
+        }
+
+        .cs-overview-content p {
+            font-family: 'gilroy', sans-serif;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #666666;
+            margin: 0;
+        }
+
+        .cs-view-more-btn {
+            background-color: #111111;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-family: 'gilroy', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .cs-view-more-btn:hover {
+            background-color: #16cf94;
+            color: #111111;
+        }
+
+        /* Planning & Execution Section */
+        .cs-execution-section {
+            padding: 80px 8vw;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .cs-execution-content {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .cs-execution-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .cs-execution-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #f2f2f2;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .cs-execution-title h2 {
+            font-family: 'gilroy', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: #111111;
+            margin: 0;
+        }
+
+        .cs-execution-subtitle {
+            font-family: 'gilroy', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #111111;
+            margin: 0;
+            padding: 20px 0 0 0;
+            border-top: 2px solid #f2f2f2;
+        }
+
+        .cs-execution-points {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .cs-execution-point {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .cs-point-number {
+            min-width: 24px;
+            height: 24px;
+            background-color: #16cf94;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'gilroy', sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        .cs-execution-point p {
+            font-family: 'gilroy', sans-serif;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666666;
+            margin: 0;
+        }
+
+        .cs-execution-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #f5f5f5 0%, #ede7dd 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cs-execution-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Stats Section */
+        .cs-stats-section {
+            padding: 80px 8vw;
+            max-width: 1400px;
+            margin: 0 auto;
+            background-color: transparent;
+        }
+
+        .cs-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .cs-stat-item {
+            text-align: center;
+        }
+
+        .cs-stat-num {
+            font-family: 'gilroy', sans-serif;
+            font-size: 3.5vw;
+            font-weight: 900;
+            color: #16cf94;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .cs-stat-label {
+            font-family: 'gilroy', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #666666;
+            letter-spacing: 0.5px;
+        }
+
+        /* Additional Features Section */
+        .cs-features-section {
+            padding: 80px 8vw;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .cs-features-title {
+            font-family: 'gilroy', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            color: #111111;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .cs-features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .cs-feature-card {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #f2f2f2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .cs-feature-card:hover {
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+            border-color: #16cf94;
+            transform: translateY(-5px);
+        }
+
+        .cs-feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #f2f2f2;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .cs-feature-card h3 {
+            font-family: 'gilroy', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            color: #111111;
+            margin: 0;
+        }
+
+        .cs-feature-card p {
+            font-family: 'gilroy', sans-serif;
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666666;
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .cs-cta-section {
+            padding: 100px 8vw;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            background: linear-gradient(135deg, #16cf94 0%, #14cf93 100%);
+            border-radius: 24px;
+            margin-bottom: 80px;
+        }
+
+        .cs-cta-section h2 {
+            font-family: 'gilroy', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .cs-cta-section p {
+            font-family: 'gilroy', sans-serif;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cs-cta-btn {
+            background-color: #111111;
+            color: #16cf94;
+            border: none;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-family: 'gilroy', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cs-cta-btn:hover {
+            background-color: white;
+            color: #16cf94;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .cs-footer {
+            background-color: #111111;
+            color: white;
+            padding: 60px 8vw 40px 8vw;
+            margin-top: 80px;
+        }
+
+        .cs-footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .cs-footer-section h3 {
+            font-family: 'gilroy', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: #888;
+        }
+
+        .cs-footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .cs-footer-links a {
+            text-decoration: none;
+            color: #ccc;
+            font-size: 15px;
+            transition: color 0.2s;
+        }
+
+        .cs-footer-links a:hover {
+            color: #16cf94;
+        }
+
+        .cs-footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .cs-footer-bottom a {
+            color: #16cf94;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .cs-footer-bottom a:hover {
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .cs-hero {
+                flex-direction: column;
+                padding: 60px 8vw;
+            }
+
+            .cs-hero-left,
+            .cs-hero-right {
+                width: 100%;
+            }
+
+            .cs-overview-section,
+            .cs-execution-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .cs-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .cs-features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .cs-footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cs-hero {
+                padding: 40px 5vw;
+            }
+
+            .cs-hero-left h1 {
+                font-size: 2.5rem;
+            }
+
+            .cs-overview-section,
+            .cs-execution-section {
+                padding: 60px 5vw;
+            }
+
+            .cs-stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .cs-features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cs-footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .cs-footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .cs-stat-num {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" data-scroll-container>
+        <!-- ========== MOBILE NAV ========== -->
+        <button id="mobile-nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div id="drawer-overlay"></div>
+        <aside id="mobile-drawer" aria-hidden="true">
+            <span class="drawer-label">Menu</span>
+            <nav class="drawer-links">
+                <a href="index.html#home">Home</a>
+                <a href="index.html#work">Feat Items</a>
+                <a href="index.html#page2">UX Projects</a>
+                <a href="index.html#journey">My Journey</a>
+                <a href="case-studies.html">Case Studies</a>
+                <a href="./Resume/Adarsh_Gachha_Resume.pdf" download="Adarsh_Gachha_Resume">Resume</a>
+            </nav>
+            <div class="drawer-foot">
+                <span class="drawer-status">CURRENTLY AVAILABLE FOR<br>FREELANCE WORLDWIDE</span>
+                <div class="drawer-socials">
+                    <a href="https://bento.me/adarsh-gachha" target="_blank">Bento</a>
+                    <a href="https://www.linkedin.com/in/adarshgachha" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/iammradarsh" target="_blank">GitHub</a>
+                </div>
+                <a class="drawer-contact-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=adarshgachha@gmail.com" target="_blank">Contact me</a>
+            </div>
+        </aside>
+
+        <!-- ========== NAVBAR ========== -->
+        <nav id="nav">
+            <a href="index.html">
+                Adarsh Gachha
+                <span id="line1" class="line"></span>
+                <span id="line2" class="line"></span>
+            </a>
+            <a href="./Resume/Adarsh_Gachha_Resume.pdf" download="Adarsh_Gachha_Resume">
+                Download Resume
+                <span id="line1" class="line"></span>
+                <span id="line2" class="line"></span>
+            </a>
+            <a href="https://bento.me/adarsh-gachha">
+                Socials - My Bento
+                <span id="line1" class="line"></span>
+                <span id="line2" class="line"></span>
+            </a>
+            <a href="mailto:adarshgachha@gmail.com">
+                Contact
+                <span id="line1" class="line"></span>
+                <span id="line2" class="line"></span>
+            </a>
+        </nav>
+
+        <!-- ========== HERO SECTION ========== -->
+        <section class="cs-hero" data-scroll>
+            <div class="cs-hero-left">
+                <div class="cs-hero-title-container">
+                    <div class="cs-hero-line"></div>
+                    <h1>Humble <span>Cows</span> - Custom ERP Solution</h1>
+                </div>
+                <p>A comprehensive ERP system designed to streamline dairy operations, from milk procurement to inventory management and financial reporting.</p>
+            </div>
+            <div class="cs-hero-right">
+                <div class="cs-illustration-container">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23ede7dd'/%3E%3Crect x='50' y='50' width='300' height='300' fill='%2316cf94' opacity='0.2' rx='20'/%3E%3Ccircle cx='200' cy='200' r='80' fill='%2316cf94' opacity='0.3'/%3E%3C/svg%3E" alt="Humble Cows Illustration">
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== PROJECT OVERVIEW ========== -->
+        <section class="cs-overview-section" data-scroll>
+            <div class="cs-overview-image">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 350'%3E%3Crect width='400' height='350' fill='%23f5f5f5'/%3E%3Crect x='50' y='40' width='300' height='220' fill='%2316cf94' opacity='0.3' rx='15'/%3E%3Crect x='70' y='70' width='90' height='90' fill='%2316cf94' opacity='0.5' rx='10'/%3E%3Crect x='180' y='70' width='90' height='90' fill='%2316cf94' opacity='0.4' rx='10'/%3E%3Crect x='70' y='180' width='90' height='60' fill='%2316cf94' opacity='0.45' rx='10'/%3E%3C/svg%3E" alt="Project Overview">
+            </div>
+            <div class="cs-overview-content">
+                <div class="cs-overview-header">
+                    <div class="cs-overview-icon">📊</div>
+                    <h2>Project Overview</h2>
+                </div>
+                <p>Humble Cows is an initiative in the Food, FMCG, and Agriculture sector, established in 2018. The firm provides dairy products including dairy feeds, ghee, and milk to bulk dairy corporations. To address the complex procurement and management needs of the dairy industry, Humble Cows partnered with Hackerkernel to develop a custom ERP system.</p>
+                <p>Our goal was to create a comprehensive web portal and mobile app that could link various processes: from milk fat testing machine reports to farmer databases, and monthly profit reports. The system had to be simple and intuitive for farmers while maintaining enterprise-level functionality.</p>
+                <a href="#" class="cs-view-more-btn">View More <i class="ri-arrow-right-line"></i></a>
+            </div>
+        </section>
+
+        <!-- ========== PLANNING & EXECUTION ========== -->
+        <section class="cs-execution-section" data-scroll>
+            <div class="cs-execution-content">
+                <div class="cs-execution-title">
+                    <div class="cs-execution-icon">📋</div>
+                    <h2>Planning & Execution</h2>
+                </div>
+                
+                <h3 class="cs-execution-subtitle">UI/UX Design</h3>
+                <div class="cs-execution-points">
+                    <div class="cs-execution-point">
+                        <div class="cs-point-number">1</div>
+                        <p>Design is an important part of every project. The interface for an app used by numerous people should be simple and intuitive.</p>
+                    </div>
+                    <div class="cs-execution-point">
+                        <div class="cs-point-number">2</div>
+                        <p>Since the app was to be used for business process automation, the design was made user-friendly and straightforward.</p>
+                    </div>
+                    <div class="cs-execution-point">
+                        <div class="cs-point-number">3</div>
+                        <p>The software had several user roles and multiple navigation buttons, organized for effortless functioning of the system.</p>
+                    </div>
+                    <div class="cs-execution-point">
+                        <div class="cs-point-number">4</div>
+                        <p>Wireframes were designed first and all unnecessary details were eliminated to create final polished templates, font styles, and color schemes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cs-execution-image">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 450'%3E%3Crect width='400' height='450' fill='%23f5f5f5'/%3E%3Crect x='30' y='30' width='340' height='280' fill='%2316cf94' opacity='0.25' rx='15'/%3E%3Crect x='50' y='50' width='100' height='120' fill='%2316cf94' opacity='0.4' rx='8'/%3E%3Crect x='170' y='50' width='100' height='120' fill='%2316cf94' opacity='0.35' rx='8'/%3E%3Crect x='290' y='50' width='60' height='120' fill='%2316cf94' opacity='0.3' rx='8'/%3E%3C/svg%3E" alt="Design Process">
+            </div>
+        </section>
+
+        <!-- ========== STATS SECTION ========== -->
+        <section class="cs-stats-section" data-scroll>
+            <div class="cs-stats-grid">
+                <div class="cs-stat-item">
+                    <div class="cs-stat-num">12</div>
+                    <div class="cs-stat-label">Months Duration</div>
+                </div>
+                <div class="cs-stat-item">
+                    <div class="cs-stat-num">8</div>
+                    <div class="cs-stat-label">Team Members</div>
+                </div>
+                <div class="cs-stat-item">
+                    <div class="cs-stat-num">5</div>
+                    <div class="cs-stat-label">Modules Built</div>
+                </div>
+                <div class="cs-stat-item">
+                    <div class="cs-stat-num">99%</div>
+                    <div class="cs-stat-label">Uptime SLA</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== FEATURES SECTION ========== -->
+        <section class="cs-features-section" data-scroll>
+            <h2 class="cs-features-title">Key Features</h2>
+            <div class="cs-features-grid">
+                <div class="cs-feature-card">
+                    <div class="cs-feature-icon">📱</div>
+                    <h3>Cross-Platform</h3>
+                    <p>Both web and mobile applications designed for seamless experience across all devices and screen sizes.</p>
+                </div>
+                <div class="cs-feature-card">
+                    <div class="cs-feature-icon">🔐</div>
+                    <h3>Enterprise Security</h3>
+                    <p>Role-based access control and enterprise-grade security protocols to protect sensitive business data.</p>
+                </div>
+                <div class="cs-feature-card">
+                    <div class="cs-feature-icon">📊</div>
+                    <h3>Real-time Analytics</h3>
+                    <p>Advanced reporting and analytics dashboard for instant business insights and data-driven decisions.</p>
+                </div>
+                <div class="cs-feature-card">
+                    <div class="cs-feature-icon">🔄</div>
+                    <h3>Process Automation</h3>
+                    <p>Automated workflows to streamline procurement, inventory management, and financial processes.</p>
+                </div>
+                <div class="cs-feature-card">
+                    <div class="cs-feature-icon">👥</div>
+                    <h3>Multi-Role System</h3>
+                    <p>Customizable user roles and permissions for farmers, operations team, and management.</p>
+                </div>
+                <div class="cs-feature-card">
+                    <div class="cs-feature-icon">⚡</div>
+                    <h3>High Performance</h3>
+                    <p>Optimized for speed with minimal latency and 99% uptime across all systems.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CTA SECTION ========== -->
+        <section class="cs-cta-section" data-scroll>
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Let's build a custom solution tailored to your unique business needs. Contact us today to discuss your project.</p>
+            <a href="mailto:adarshgachha@gmail.com" class="cs-cta-btn">Get in Touch</a>
+        </section>
+
+        <!-- ========== FOOTER ========== -->
+        <footer class="cs-footer" data-scroll>
+            <div class="cs-footer-content">
+                <div class="cs-footer-section">
+                    <h3>About</h3>
+                    <div class="cs-footer-links">
+                        <a href="index.html#home">Home</a>
+                        <a href="index.html#work">Projects</a>
+                        <a href="case-studies.html">Case Studies</a>
+                    </div>
+                </div>
+                <div class="cs-footer-section">
+                    <h3>Services</h3>
+                    <div class="cs-footer-links">
+                        <a href="#">Product Design</a>
+                        <a href="#">Web Development</a>
+                        <a href="#">Mobile Apps</a>
+                    </div>
+                </div>
+                <div class="cs-footer-section">
+                    <h3>Connect</h3>
+                    <div class="cs-footer-links">
+                        <a href="https://bento.me/adarsh-gachha" target="_blank">Bento</a>
+                        <a href="https://www.linkedin.com/in/adarshgachha" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/iammradarsh" target="_blank">GitHub</a>
+                    </div>
+                </div>
+                <div class="cs-footer-section">
+                    <h3>Social</h3>
+                    <div class="cs-footer-links">
+                        <a href="https://instagram.com" target="_blank">Instagram</a>
+                        <a href="https://facebook.com" target="_blank">Facebook</a>
+                        <a href="https://twitter.com" target="_blank">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="cs-footer-bottom">
+                <span>&copy; 2025 Adarsh Gachha. All rights reserved.</span>
+                <div>
+                    <a href="#">Privacy Policy</a> | 
+                    <a href="#">Terms of Service</a> | 
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Dushyant1295/dpkCursor/cursor.js"></script>
+
+    <script>
+        // Initialize Locomotive Scroll
+        let scrollInstance;
+
+        function locoIntialize() {
+            gsap.registerPlugin(ScrollTrigger);
+
+            scrollInstance = new LocomotiveScroll({
+                el: document.querySelector("#main"),
+                smooth: true,
+            });
+
+            scrollInstance.on("scroll", ScrollTrigger.update);
+
+            ScrollTrigger.scrollerProxy("#main", {
+                scrollTop(value) {
+                    return arguments.length
+                        ? scrollInstance.scrollTo(value, 0, 0)
+                        : scrollInstance.scroll.instance.scroll.y;
+                },
+                getBoundingClientRect() {
+                    return {
+                        top: 0,
+                        left: 0,
+                        width: window.innerWidth,
+                        height: window.innerHeight,
+                    };
+                },
+                pinType: document.querySelector("#main").style.transform ? "transform" : "fixed",
+            });
+
+            ScrollTrigger.addEventListener("refresh", () => scrollInstance.update());
+            ScrollTrigger.refresh();
+
+            window.addEventListener("load", () => {
+                setTimeout(() => {
+                    scrollInstance.update();
+                    ScrollTrigger.refresh();
+                }, 500);
+            });
+        }
+
+        // Mobile Navigation Toggle
+        const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerOverlay = document.getElementById('drawer-overlay');
+        const drawerLinks = document.querySelectorAll('.drawer-links a');
+
+        function toggleDrawer() {
+            const isOpen = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+            mobileNavToggle.setAttribute('aria-expanded', !isOpen);
+            mobileDrawer.setAttribute('aria-hidden', isOpen);
+            drawerOverlay.style.display = isOpen ? 'none' : 'block';
+        }
+
+        mobileNavToggle.addEventListener('click', toggleDrawer);
+        drawerOverlay.addEventListener('click', toggleDrawer);
+
+        drawerLinks.forEach(link => {
+            link.addEventListener('click', toggleDrawer);
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', locoIntialize);
+    </script>
+</body>
+
+</html>
