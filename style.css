@@ -1052,7 +1052,7 @@ polyline {
 }
 
 .cs-featured-header-block {
-  border-left: 3px solid #e63946;
+  border-left: 3px solid #52e0ed;
   padding-left: 20px;
   display: flex;
   flex-direction: column;
@@ -1079,7 +1079,7 @@ polyline {
 }
 
 .mood-highlight {
-  color: #e63946;
+  color: #52e0ed;
 }
 
 .cs-featured-info p {
@@ -1110,7 +1110,7 @@ polyline {
 }
 
 .cs-view-btn:hover {
-  background-color: #e63946;
+  background-color: #52e0ed;
 }
 
 .cs-btn-arrow {
@@ -1258,7 +1258,7 @@ polyline {
 }
 
 .cs-card:hover .cs-card-corner-arrow {
-  background-color: #e63946;
+  background-color: #52e0ed;
   color: #ffffff;
 }
 
@@ -1291,7 +1291,7 @@ polyline {
 }
 
 .cs-all-btn:hover {
-  background-color: #e63946;
+  background-color: #52e0ed;
   transform: scale(1.03);
 }
 
